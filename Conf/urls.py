@@ -21,7 +21,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('pages.urls', namespace='pages'))
+    path('blogs/', include('blogs.urls', namespace='blogs')),
+    path('recipies/', include('recipies.urls', namespace='recipies')),
+    path('shop/', include('shop.urls', namespace='shop')),
+    path('', include('pages.urls', namespace='pages')),
 ]
 
 if settings.DEBUG:
