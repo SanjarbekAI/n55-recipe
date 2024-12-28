@@ -27,174 +27,27 @@
             <div class="row gutters-60">
                 <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog1.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog2.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
+                        {% for blog in blogs %}
+                            <div class="col-sm-6 col-12">
+                                <div class="blog-box-layout1">
+                                    <div class="item-figure">
+                                        <a href="{% url 'blogs:detail' pk=blog.id %}"><img src="{{ blog.image.url }}"
+                                                                        alt="Blog"></a>
+                                    </div>
+                                    <div class="item-content">
+                                        <ul class="entry-meta">
+                                            <li><a href="#"><i class="fas fa-clock"></i>{{ blog.created_at }}</a></li>
+                                            <li><a href="#"><i class="fas fa-user"></i>by <span>{{ blog.author.username }}</span></a>
+                                            </li>
+                                        </ul>
+                                        <h3 class="item-title"><a href="{% url 'blogs:detail' pk=blog.id %}">{{ blog.title }}</a></h3>
+                                        <p>{{ blog.short_description }}</p>
+                                        <a href="{% url 'blogs:detail' pk=blog.id %}" class="item-btn">Continue Reading<i
+                                                class="flaticon-next"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog3.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog4.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog5.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog6.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog7.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <div class="blog-box-layout1">
-                                <div class="item-figure">
-                                    <a href="blog_detail.html"><img src="{% static 'img/blog/blog8.jpg' %}" alt="Blog"></a>
-                                </div>
-                                <div class="item-content">
-                                    <ul class="entry-meta">
-                                        <li><a href="#"><i class="fas fa-clock"></i>15 December, 2018</a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    </ul>
-                                    <h3 class="item-title"><a href="blog_detail.html">Tomatoes Stuffed with Foieand
-                                        area
-                                        everyone still primaril</a></h3>
-                                    <p>Rmply dummy text of the printing and typesettingindu
-                                        stry. Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                    <a href="blog_detail.html" class="item-btn">Continue Reading<i
-                                            class="flaticon-next"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <ul class="pagination-layout1">
                         <li class="active">
@@ -362,63 +215,72 @@
                             <ul>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure9.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure9.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure10.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure10.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure11.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure11.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure12.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure12.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure13.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure13.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure14.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure14.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure15.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure15.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure16.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure16.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="item-box">
-                                        <img src="{% static 'img/social-figure/social-figure17.jpg' %}" alt="Social Figure"
+                                        <img src="{% static 'img/social-figure/social-figure17.jpg' %}"
+                                             alt="Social Figure"
                                              class="img-fluid">
                                         <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
                                     </div>
