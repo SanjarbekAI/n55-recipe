@@ -8,10 +8,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>Grid Blog Page</h1>
+                        <h1>List Blog Page</h1>
                         <ul>
                             <li>
-                                <a href="../index.html">Home</a>
+                                <a href="{% url 'pages:home' %}">Home</a>
                             </li>
                             <li>Blog</li>
                         </ul>
@@ -21,34 +21,34 @@
         </div>
     </section>
     <!-- Inne Page Banner Area End Here -->
-    <!-- Blog Grid Area Start Here -->
-    <section class="blog-grid-page-wrap padding-top-80 padding-bottom-50">
+    <!-- Blog List Area Start Here -->
+    <section class="blog-list-page-wrap padding-top-80 padding-bottom-50">
         <div class="container">
             <div class="row gutters-60">
                 <div class="col-lg-8">
-                    <div class="row">
-                        {% for blog in blogs %}
-                            <div class="col-sm-6 col-12">
-                                <div class="blog-box-layout1">
-                                    <div class="item-figure">
-                                        <a href="{% url 'blogs:detail' pk=blog.id %}"><img src="{{ blog.image.url }}"
-                                                                        alt="Blog"></a>
-                                    </div>
-                                    <div class="item-content">
-                                        <ul class="entry-meta">
-                                            <li><a href="#"><i class="fas fa-clock"></i>{{ blog.created_at }}</a></li>
-                                            <li><a href="#"><i class="fas fa-user"></i>by <span>{{ blog.author.username }}</span></a>
-                                            </li>
-                                        </ul>
-                                        <h3 class="item-title"><a href="{% url 'blogs:detail' pk=blog.id %}">{{ blog.title }}</a></h3>
-                                        <p>{{ blog.short_description }}</p>
-                                        <a href="{% url 'blogs:detail' pk=blog.id %}" class="item-btn">Continue Reading<i
-                                                class="flaticon-next"></i></a>
-                                    </div>
-                                </div>
+                    {% for blog in blogs %}
+                        <div class="blog-box-layout1">
+                            <div class="item-figure">
+                                <a href="{% url 'blogs:detail' pk=blog.id %}"><img src="{{ blog.image.url }}"
+                                                                                   alt="Blog"></a>
                             </div>
-                        {% endfor %}
-                    </div>
+                            <div class="item-content">
+                                <ul class="entry-meta">
+                                    <li><a href="#"><i class="fas fa-clock"></i>{{ blog.created_at }}</a></li>
+                                    <li><a href="#"><i class="fas fa-user"></i>by
+                                        <span>{{ blog.author.username }}</span></a></li>
+                                    <li><a href="#"><i class="fas fa-comments"></i>Comments
+                                        <span>({{ blog.comments.count }})</span></a></li>
+                                    <li><a href="#"><i class="fas fa-heart"></i><span>{{ blog.likes.count }}</span></a>
+                                    </li>
+                                </ul>
+                                <h3 class="item-title"><a href="single-blog.html">{{ blog.title }}</a></h3>
+                                <p>{{ blog.short_description }}</p>
+                                <a href="{% url 'blogs:detail' pk=blog.id %}" class="item-btn">Continue Reading<i
+                                        class="flaticon-next"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
                     <ul class="pagination-layout1">
                         <li class="active">
                             <a href="#">1</a>
@@ -71,58 +71,22 @@
                         </div>
                         <div class="widget-blog-post">
                             <ul class="block-list">
-                                <li class="single-item">
-                                    <div class="item-img">
-                                        <a href="#"><img src="{% static 'img/product/latest1.jpg' %}" alt="Post"></a>
-                                    </div>
-                                    <div class="item-content">
-                                        <div class="item-post-date"><a href="#"><i class="fas fa-clock"></i>15 Dec, 2018</a>
+                                {% for blog in blogs %}
+                                    <li class="single-item">
+                                        <div class="item-img">
+                                            <a href="{% url 'blogs:detail' pk=blog.id %}">
+                                                <img style="width: 200px; height: 100px;" src="{{ blog.image.url }}"
+                                                             alt="Post"></a>
                                         </div>
-                                        <h4 class="item-title"><a href="#">Salami Oven Roasted are
-                                            Mozzarella Oelette</a></h4>
-                                        <div class="item-post-by"><a href="blog_detail.html"><i class="fas fa-user"></i><span>by</span>
-                                            John Martin</a></div>
-                                    </div>
-                                </li>
-                                <li class="single-item">
-                                    <div class="item-img">
-                                        <a href="#"><img src="{% static 'img/product/latest2.jpg' %}" alt="Post"></a>
-                                    </div>
-                                    <div class="item-content">
-                                        <div class="item-post-date"><a href="#"><i class="fas fa-clock"></i>15 Dec, 2018</a>
+                                        <div class="item-content">
+                                            <div class="item-post-date"><a href="#"><i class="fas fa-clock"></i>
+                                            {{ blog.created_at|date }}</a></div>
+                                            <h4 class="item-title"><a href="#">{{ blog.title|truncatechars:":20"|lower }}</a></h4>
+                                            <div class="item-post-by"><a href="single-blog.html"><i
+                                                    class="fas fa-user"></i>{{ blog.author.username|slice:":10"}}</a></div>
                                         </div>
-                                        <h4 class="item-title"><a href="#">Salami Oven Roasted are
-                                            Mozzarella Oelette</a></h4>
-                                        <div class="item-post-by"><a href="blog_detail.html"><i class="fas fa-user"></i><span>by</span>
-                                            John Martin</a></div>
-                                    </div>
-                                </li>
-                                <li class="single-item">
-                                    <div class="item-img">
-                                        <a href="#"><img src="{% static 'img/product/latest3.jpg' %}" alt="Post"></a>
-                                    </div>
-                                    <div class="item-content">
-                                        <div class="item-post-date"><a href="#"><i class="fas fa-clock"></i>15 Dec, 2018</a>
-                                        </div>
-                                        <h4 class="item-title"><a href="#">Salami Oven Roasted are
-                                            Mozzarella Oelette</a></h4>
-                                        <div class="item-post-by"><a href="blog_detail.html"><i class="fas fa-user"></i><span>by</span>
-                                            John Martin</a></div>
-                                    </div>
-                                </li>
-                                <li class="single-item">
-                                    <div class="item-img">
-                                        <a href="#"><img src="{% static 'img/product/latest4.jpg' %}" alt="Post"></a>
-                                    </div>
-                                    <div class="item-content">
-                                        <div class="item-post-date"><a href="#"><i class="fas fa-clock"></i>15 Dec, 2018</a>
-                                        </div>
-                                        <h4 class="item-title"><a href="#">Salami Oven Roasted are
-                                            Mozzarella Oelette</a></h4>
-                                        <div class="item-post-by"><a href="blog_detail.html"><i class="fas fa-user"></i><span>by</span>
-                                            John Martin</a></div>
-                                    </div>
-                                </li>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -152,41 +116,13 @@
                         </div>
                         <div class="widget-categories">
                             <ul>
+                                {% for cat in categories %}
                                 <li>
-                                    <a href="#">BreakFast
-                                        <span>25</span>
+                                    <a href="#">{{ cat.title }}
+                                        <span></span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">Lunch
-                                        <span>15</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Pasta
-                                        <span>22</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Dinner
-                                        <span>18</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Dessert
-                                        <span>36</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Drinks
-                                        <span>12</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Fruits
-                                        <span>05</span>
-                                    </a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -205,6 +141,40 @@
                                     <button type="submit" class="item-btn">SUBSCRIBE</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="section-heading heading-dark">
+                            <h3 class="item-heading">FEATURED ARTICLE</h3>
+                        </div>
+                        <div class="widget-featured-feed">
+                            <div class="rc-carousel nav-control-layout1" data-loop="true" data-items="3"
+                                 data-margin="5" data-autoplay="true" data-autoplay-timeout="5000"
+                                 data-smart-speed="700"
+                                 data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1"
+                                 data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="1"
+                                 data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="1"
+                                 data-r-small-nav="true" data-r-small-dots="false" data-r-medium="1"
+                                 data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="1"
+                                 data-r-large-nav="true" data-r-large-dots="false" data-r-extra-large="1"
+                                 data-r-extra-large-nav="true" data-r-extra-large-dots="false">
+                                {% for blog in most_liked_blogs %}
+                                    <div class="featured-box-layout1">
+                                        <div class="item-img">
+                                            <img src="{{ blog.image.url }}" alt="Brand" class="img-fluid">
+                                        </div>
+                                        <div class="item-content">
+                                            {% for cat in blog.categories.all %}
+                                                <span class="ctg-name">{{ cat.title }}</span>
+                                            {% endfor %}
+                                            <h4 class="item-title"><a href="{% url 'blogs:detail' pk=blog.id %}">
+                                                {{ blog.title|truncatechars:20 }}</a>
+                                            </h4>
+                                            <p>{{ blog.short_description|truncatechars:40 }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                     <div class="widget">
@@ -328,5 +298,5 @@
             </div>
         </div>
     </section>
-    <!-- Blog Grid Area End Here -->
+    <!-- Blog List Area End Here -->
 {% endblock %}

@@ -1,4 +1,5 @@
 - login, logout, forget password, change password, changing user model
 - static and dynamic translation, custom filters, tags,
 - custom validators, ckeditor, image validator, triggers
+- paginations
 

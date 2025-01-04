@@ -1,7 +1,15 @@
 from django.db import models
 
 
-class ContactModel(models.Model):
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class ContactModel(BaseModel):
     name = models.CharField(max_length=128)
     email = models.EmailField()
     subject = models.CharField(max_length=255)

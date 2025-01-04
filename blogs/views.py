@@ -1,12 +1,22 @@
 from django.shortcuts import render, get_object_or_404
 
-from blogs.models import BlogModel
+from blogs.models import BlogModel, BlogCategoryModel
 
 
 def blog_list_view(request):
     blogs = BlogModel.objects.all()
+    """
+    
+    """
+    most_liked_blogs = BlogModel.objects.all().order_by('likes')[:3]
+    last_blogs = BlogModel.objects.order_by('-created_at')[:4]
+    categories = BlogCategoryModel.objects.all()
+
     context = {
-        "blogs": blogs
+        "blogs": blogs,
+        "most_liked_blogs": most_liked_blogs,
+        "last_blogs": last_blogs,
+        "categories": categories
     }
     return render(request, 'blogs/blogs_list.html', context)
 

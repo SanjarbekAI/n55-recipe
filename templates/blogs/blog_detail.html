@@ -134,55 +134,22 @@
                         </div>
                         <div class="recipe-reviews">
                             <div class="section-heading3 heading-dark">
-                                <h2 class="item-heading">RECIPE REVIEWS</h2>
+                                <h2 class="item-heading">BLOG REVIEWS</h2>
                             </div>
                             <ul>
-                                <li class="reviews-single-item">
-                                    <div class="media media-none--xs">
-                                        <img src="{% static 'img/blog/comment1.jpg' %}" alt="Comment"
-                                             class="media-img-auto">
-                                        <div class="media-body">
-                                            <h4 class="comment-title">Liza Zaman</h4>
-                                            <span class="post-date">September 27, 2018</span>
-                                            <p>Absolutely great recipe. I cooked it for my kids and they loved it,
-                                                even
-                                                asked for more, can you believe it?</p>
-                                            <ul class="item-rating">
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-empty"><i class="fas fa-star"></i></li>
-                                                <li class="single-item"><span>9<span> / 10</span></span></li>
-                                            </ul>
-                                            <a href="#" class="item-btn">REPLY<i
-                                                    class="fas fa-long-arrow-alt-right"></i></a>
+                                {% for comment in blog.comments.all %}
+                                    <li class="reviews-single-item">
+                                        <div class="media media-none--xs">
+                                            <img src="{% static 'img/blog/comment1.jpg' %}" alt="Comment"
+                                                 class="media-img-auto">
+                                            <div class="media-body">
+                                                <h4 class="comment-title">{{ comment.user.username }}</h4>
+                                                <span class="post-date">{{ comment.created_at }}</span>
+                                                <p>{{ comment.comment }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="reviews-single-item">
-                                    <div class="media media-none--xs">
-                                        <img src="{% static 'img/blog/comment2.jpg' %}" alt="Comment"
-                                             class="media-img-auto">
-                                        <div class="media-body">
-                                            <h4 class="comment-title">John Martin</h4>
-                                            <span class="post-date">September 12, 2018</span>
-                                            <p>Absolutely great recipe. I cooked it for my kids and they loved it,
-                                                even
-                                                asked for more, can you believe it?</p>
-                                            <ul class="item-rating">
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                                <li class="single-item star-empty"><i class="fas fa-star"></i></li>
-                                                <li class="single-item"><span>7<span> / 10</span></span></li>
-                                            </ul>
-                                            <a href="#" class="item-btn">REPLY<i
-                                                    class="fas fa-long-arrow-alt-right"></i></a>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="leave-review">
@@ -239,7 +206,7 @@
                                         </div>
                                         <div class="item-content">
                                             <div class="item-post-date"><a href="#"><i class="fas fa-clock"></i>
-                                            {{ blog.created_at }}</a></div>
+                                                {{ blog.created_at }}</a></div>
                                             <h4 class="item-title"><a href="#">{{ blog.title }}</a></h4>
                                             <div class="item-post-by"><a href="blog_detail.html"><i
                                                     class="fas fa-user"></i><span>by</span>
