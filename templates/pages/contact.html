@@ -1,6 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
+    {% for msg in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Hey! </strong> {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
     <!-- Inne Page Banner Area Start Here -->
     <section class="inner-page-banner bg-common" data-bg-image="img/figure/inner-page-banner1.jpg">
         <div class="container">
@@ -55,7 +61,6 @@
                 </div>
                 <form id="contact-form" class="contact-form-box" method="post" action="{% url 'pages:contact' %}">
                     {% csrf_token %}
-                    <p>{{ message }}</p>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>
@@ -79,9 +84,12 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="col-12 form-group">
-                            <label for="form-message"></label><textarea placeholder="Type your text" class="textarea form-control" name="text"
+                            <label for="form-message"></label><textarea placeholder="Type your text"
+                                                                        class="textarea form-control" name="text"
                                                                         id="form-message"
-                                                                        rows="7" cols="20" data-error="Message field is required" required></textarea>
+                                                                        rows="7" cols="20"
+                                                                        data-error="Message field is required"
+                                                                        required></textarea>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="col-12 form-group mb-0 mt-3">
