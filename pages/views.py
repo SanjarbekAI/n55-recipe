@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.contrib import messages
+from django.shortcuts import render
 
 from pages.forms import ContactForm
 
@@ -19,8 +19,8 @@ def contact_page_view(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your contact information is sent")
+            messages.success(request, 'Your contact information is sent to database')
             return render(request, 'pages/contact.html')
         else:
-            messages.error(request, form.errors)
+            messages.error(request, 'Something getting wrong, please try again later')
             return render(request, 'pages/contact.html')
